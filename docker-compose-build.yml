@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  little-spark:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        PYTHON_VERSION: ${PYTHON_VERSION}
+        PYTHON_MAJOR_MINOR_VERSION: ${PYTHON_MAJOR_MINOR_VERSION}
+        SPARK_VERSION: ${SPARK_VERSION}
+        SCALA_VERSION: ${SCALA_VERSION}
+        HADOOP_VERSION: ${HADOOP_VERSION}
+        JAVA_VERSION: ${JAVA_VERSION}
+    network_mode: "host"
+    user: root
+    ports:
+      - 8888:8888 #Jupyter
+      - 8998:8998 #Livy
+      - 10000:10000 #rpc
+      - 10001:10001 #rpc
+    env_file:
+      - .env
+    volumes:
+      - ./:/workspace:cached

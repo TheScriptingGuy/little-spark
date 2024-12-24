@@ -1,0 +1,8 @@
+numpy==1.26.4
+pandas==2.1.4
+pandasql==0.7.3
+pyarrow==15.0.0
+pyarrow-hotfix==0.6
+pyspark[connect]
+pyspark[sql]
+pyspark[pandas_on_spark]
