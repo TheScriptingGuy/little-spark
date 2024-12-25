@@ -25,7 +25,7 @@ ENV JAVA_HOME=/opt/java/openjdk \
 
 # Copy requirements and install dependencies
 COPY requirements.txt /tmp/requirements.txt
-RUN apt-get update && apt-get install -y wget curl procps \
+RUN apt-get update && apt-get install -y wget curl procps sudo \
     && pip install --no-cache-dir -r /tmp/requirements.txt \
     && pip install --no-cache-dir pyspark==$SPARK_VERSION \
     && pip cache purge \
