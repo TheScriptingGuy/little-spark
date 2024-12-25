@@ -35,8 +35,10 @@
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-			"ms-kubernetes-tools.vscode-kubernetes-tools",
-			"ms-vscode-remote.remote-containers"
+				"ms-kubernetes-tools.vscode-kubernetes-tools",
+				"ms-vscode-remote.remote-containers",
+				"ms-toolsai.jupyter",
+				"ms-python.python"
 			],
 			"settings": {
 				"kubernetes.enable": true
