@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "Debug (Attach) - Remote",
+        "request": "attach",
+        "hostName": "localhost",
+        "port": 5005,
+        "projectName": "incubator-livy"
+      },
+      {
+        "type": "java",
+        "name": "Debug (Launch) - Livy Server",
+        "request": "launch",
+        "mainClass": "org.apache.livy.server.LivyServer",
+        "projectName": "incubator-livy",
+        "cwd": "${workspaceFolder}",
+        "args": [],
+        "vmArgs": "-Dlog4j.configuration=file:${workspaceFolder}/conf/log4j.properties",
+        "env": {
+          "LIVY_HOME": "${workspaceFolder}",
+          "LIVY_CONF_DIR": "${workspaceFolder}/conf",
+          "SPARK_HOME": "/path/to/your/spark",
+          "HADOOP_CONF_DIR": "/path/to/your/hadoop/conf"
+        }
+      }
+    ]
+  }

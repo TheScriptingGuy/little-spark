@@ -3,7 +3,7 @@ version: '3'
 services:
   little-spark:
     image: portablespark/little-spark:main
-    network_mode: "host"
     user: root
     volumes:
       - ./:/workspace:cached
+      - ./.devcontainer/bootstrap.sh:/bootstrap.sh
