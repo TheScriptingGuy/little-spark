@@ -86,7 +86,6 @@ spec:
                     conda install sparkmagic -y
                     jupyter kernelspec uninstall sparkkernel -y
                     jupyter kernelspec uninstall sparkrkernel -y
-                    jupyter kernelspec uninstall python3 -y
                     mkdir -p /home/jovyan/.sparkmagic/
                     cp /tmp/sparkmagic.json /home/jovyan/.sparkmagic/config.json
                     cp /tmp/quickstart.ipynb /home/jovyan/work/quickstart.ipynb
@@ -117,10 +116,22 @@ data:
       "kernel_python_credentials" : {
         "username": "",
         "password": "",
-        "url": "http://lighter.spark:8080/lighter/api",
+        "url": "http://lighter.spark.svc.cluster.local:8080/lighter/api",
         "auth": "None"
       },
       "livy_session_startup_timeout_seconds": 600,
+      "session_configs_defaults": {
+        "executorCores": 2,
+        "conf": {
+          "spark.kubernetes.container.image": "apache/spark:3.5.1-scala2.12-java17-python3-ubuntu"
+        }
+      },
+      "session_configs": {
+        "executorCores": 2,
+        "conf": {
+          "spark.kubernetes.container.image": "apache/spark:3.5.1-scala2.12-java17-python3-ubuntu"
+        }
+      },
       "custom_headers": {
         "X-Compatibility-Mode": "sparkmagic"
       }

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  little-spark:
+    image: portablespark/little-spark:main
+    network_mode: "host"
+    user: root
+    volumes:
+      - ./:/workspace:cached
+      - ./kubeconfig:/root/.kube/config:ro

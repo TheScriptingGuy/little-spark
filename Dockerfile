@@ -51,6 +51,12 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
     && chmod +x kubectl \
     && mv kubectl /usr/local/bin/
 
+# Add vscode user
+RUN useradd -ms /bin/bash vscode \
+    && usermod -aG sudo vscode \
+    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/nopasswd \
+    && chmod 0440 /etc/sudoers.d/nopasswd
+
 # Download Bouncy Castle libraries
 RUN curl https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15to18/1.79/bcprov-jdk15to18-1.79.jar --output /opt/spark/jars/bcprov-jdk15to18-1.79.jar \
     && curl https://repo1.maven.org/maven2/org/bouncycastle/bcpkix-jdk15to18/1.79/bcpkix-jdk15to18-1.79.jar --output /opt/spark/jars/bcpkix-jdk15to18-1.79.jar
