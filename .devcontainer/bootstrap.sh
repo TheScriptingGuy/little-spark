@@ -13,7 +13,7 @@ echo "Added kube-dns IP ($KUBE_DNS_IP) to /etc/resolv.conf"
 # Define the kubeconfig file path
 KUBECONFIG='/usr/local/share/kube-localhost/config'
 # Define output directory for certificates and keys
-OUTPUT_DIR="/usr/local/share/ca-certificates/kube-certs"
+OUTPUT_DIR="/usr/local/share/ca-certificates"
 sudo mkdir -p $OUTPUT_DIR
 
 # Extract client certificate
