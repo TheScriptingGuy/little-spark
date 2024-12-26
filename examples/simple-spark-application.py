@@ -4,15 +4,10 @@ spark_version = "3.5.1"
 java_version = "17"
 
 # Define the Kubernetes master URL
-k8s_master_url = "k8s://https://localhost:6443"
+k8s_master_url = "k8s://http://kubernetes.default.svc.cluster.local:443"
 
 # Define the Spark image to use
 spark_image = f"apache/spark:{spark_version}-java{java_version}-python3"
-
-# Path to the self-signed certificate inside the container
-ca_cert_file = "/usr/local/share/ca-certificates/ca.crt"
-client_key_file = "/usr/local/share/ca-certificates/tls.crt"
-client_cert_file = "/usr/local/share/ca-certificates/tls.key"
     
 # Create the SparkSession
 spark = (SparkSession.builder 
@@ -20,7 +15,7 @@ spark = (SparkSession.builder
     .master(k8s_master_url) 
     .config("spark.kubernetes.container.image", spark_image) 
     .config("spark.kubernetes.namespace", "spark") 
-    .config("spark.executor.instances", "2")
+    .config("spark.executor.instances", "1")
     .getOrCreate())
 
 # Example DataFrame operation
